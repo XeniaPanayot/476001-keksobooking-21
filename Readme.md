@@ -1,7 +1,7 @@
 # Личный проект «Кексобукинг» [![Build status][travis-image]][travis-url]
 
 * Студент: [Xenia Panayot](https://up.htmlacademy.ru/javascript/21/user/476001).
-* Наставник: [Александр Белокур] (https://htmlacademy.ru/profile/alex-belokur).
+* Наставник: Александр Белокур.
 
 ---
 
