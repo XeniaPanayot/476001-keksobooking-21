@@ -80,7 +80,7 @@ const makeElement = function (tagName, className) {
 // take the template and define its elements
 const renderPin = function (getCard) {
   const pinElement = pinTemplate.cloneNode(true);
-  pinElement.querySelector(`img`) = makeElement(`img`);
+  pinElement.querySelector(`img`) = makeElement(`img`, `pin__img`);
   pinElement.querySelector(`img`).setAttribute(`alt`, getCard.offer.title);
   pinElement.querySelector(`img`).setAttribute(`src`, getCard.author.avatar);
   pinElement.querySelector(`img`).setAttribute(`width`, `40`);
