@@ -77,19 +77,6 @@ const makeElement = function (tagName, className) {
   return element;
 };
 
-// create a pin from the elements
-const makePin = function (newPin) {
-  let pin = makeElement('button','map__pin');
-  let picture = makeElement('img');
-  picture.setAttribute('alt', newPin.offer.title);
-  picture.setAttribute('src', newPin.author.avatar);
-  picture.setAttribute('width', '40');
-  picture.setAttribute('height', '40');
-  pin.appendChild(picture);
-  pin.setAttribute('style', `left:${newPin.location.x}px; top: ${newPin.location.y}px`);
-  return pin;
-}
-
 // take the template and define its elements
 const renderPin = function (getCard) {
   const pinElement = pinTemplate.cloneNode(true);
