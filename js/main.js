@@ -71,10 +71,10 @@ const pinTemplate = document.querySelector(`#pin`)
 .querySelector(`.map__pin`);
 
 // take the template and define its elements
-const renderPin = function (cardsArr) {
+const renderPin = function (getCard) {
   const pinElement = pinTemplate.cloneNode(true);
-  pinElement.querySelector(`img`).setAttribute(`alt`, cardsArr.offer.title);
-  pinElement.querySelector(`img`).setAttribute(`src`, cardsArr.author.avatar);
+  pinElement.querySelector(`img`).setAttribute(`alt`, getCard.offer.title);
+  pinElement.querySelector(`img`).setAttribute(`src`, getCard.author.avatar);
   pinElement.querySelector(`img`).setAttribute(`width`, `40`);
   pinElement.querySelector(`img`).setAttribute(`height`, `40`);
 
