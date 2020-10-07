@@ -1,7 +1,5 @@
 `use strict`;
 
-// constants
-
 const TITLE = [`Title1`, `Title2`, `Title3`];
 const PRICE = [100, 200, 300];
 const TYPE = [`palace`, `flat`, `house`, `bungalow`];
@@ -12,10 +10,11 @@ const CHECKIN = [`12:00`, `13:00`, `14:00`];
 const CHECKOUT = [`12:00`, `13:00`, `14:00`];
 const DESCRIPTION = [`Description1`, `Description2`, `Description3`];
 const PHOTOS = [`http://o0.github.io/assets/images/tokyo/hotel1.jpg`, `http://o0.github.io/assets/images/tokyo/hotel2.jpg`, `http://o0.github.io/assets/images/tokyo/hotel3.jpg`];
+const map = document.querySelector('.map__pins');
 
-// functions to make randon number and random item
+// functions to get a random number and a random item
 const getRndInteger = function (min, max) {
-return Math.round(Math.random() * (max - min + 1) ) + min;
+  return Math.round(Math.random() * (max - min + 1) ) + min;
 };
 
 const getRndItem = function (items) {
@@ -25,8 +24,7 @@ const getRndItem = function (items) {
 }
 getRndItem(DESCRIPTION);
 
-// the function to get the card
-
+// the function to get a card
 const getCard = function () {
   return {
     author: {
@@ -53,3 +51,63 @@ const getCard = function () {
   }
 }
 
+// make an array of 8 cards
+const cardsArr = [];
+const getCardsArr = function (count_cards) {
+  for (let i = 0; i < count_cards; i++) {
+    cardsArr.push(getCard());
+  }
+  return cardsArr;
+};
+getCardsArr(8); // get a card 8 times
+
+// to toggle the map to/ from faded  mode
+const mapToggler = document.querySelector('.map');
+mapToggler.classList.remove(`map--faded`);
+
+//find the template
+const pinTemplate = document.querySelector(`#pin`)
+.content
+.querySelector(`.map__pin`);
+
+// create an element of a pin
+const makeElement = function (tagName, className) {
+  let element = document.createElement(tagName);
+  element.classList.add(className);
+  return element;
+};
+
+// create a pin from the elements
+const makePin = function (newPin) {
+  let pin = makeElement('button','map__pin');
+  let picture = makeElement('img');
+  picture.setAttribute('alt', newPin.offer.title);
+  picture.setAttribute('src', newPin.author.avatar);
+  picture.setAttribute('width', '40');
+  picture.setAttribute('height', '40');
+  pin.appendChild(picture);
+  pin.setAttribute('style', `left:${newPin.location.x}px; top: ${newPin.location.y}px`);
+  return pin;
+}
+
+// take the template and define its elements
+const renderPin = function (getCard) {
+  const pinElement = pinTemplate.cloneNode(true);
+  pinElement.querySelector(`button`) = makeElement('button','map__pin');
+  pinElement.querySelector(`img`) = makeElement('img');
+  pinElement.querySelector(`img`).setAttribute(`alt`, getCard.offer.title);
+  pinElement.querySelector(`img`).setAttribute(`src`, getCard.author.avatar);
+  pinElement.querySelector(`img`).setAttribute(`width`, `40`);
+  pinElement.querySelector(`img`).setAttribute(`height`, `40`);
+
+  return pinElement;
+}
+
+// make a fragment
+const fragment = document.createDocumentFragment();
+for (let i = 0; i < cardsArr.length; i++) {
+  fragment.appendChild(renderPin(cardsArr[i]));
+};
+
+// insert the pin into its DOM parent element
+map.appendChild(fragment);
