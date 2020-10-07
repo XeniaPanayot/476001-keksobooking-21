@@ -77,7 +77,6 @@ const renderPin = function (getCard) {
   pinElement.querySelector(`img`).setAttribute(`src`, getCard.author.avatar);
   pinElement.querySelector(`img`).setAttribute(`width`, `40`);
   pinElement.querySelector(`img`).setAttribute(`height`, `40`);
-
   return pinElement;
 };
 
@@ -89,3 +88,8 @@ for (let i = 0; i < cardsArr.length; i++) {
 
 // insert the pin into its DOM parent element
 map.appendChild(fragment);
+
+/* for (let i = 0; i < cardsArr.length; i++) {
+  fragment.appendChild(fragment[i]);
+}
+*/
