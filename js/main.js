@@ -93,7 +93,6 @@ const makePin = function (newPin) {
 // take the template and define its elements
 const renderPin = function (getCard) {
   const pinElement = pinTemplate.cloneNode(true);
-  pinElement.querySelector(`button`) = makeElement('button','map__pin');
   pinElement.querySelector(`img`) = makeElement('img');
   pinElement.querySelector(`img`).setAttribute(`alt`, getCard.offer.title);
   pinElement.querySelector(`img`).setAttribute(`src`, getCard.author.avatar);
