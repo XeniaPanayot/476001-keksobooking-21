@@ -1,4 +1,4 @@
-// 'use strict';
+'use strict';
 
 const TITLE = [`Title1`, `Title2`, `Title3`];
 const PRICE = [100, 200, 300];
@@ -71,10 +71,11 @@ const pinTemplate = document.querySelector(`#pin`)
 .querySelector(`.map__pin`);
 
 // take the template and define its elements
-const renderPin = function (getCard) {
+const renderPin = function (cardInfo) {
   const pinElement = pinTemplate.cloneNode(true);
-  pinElement.querySelector(`img`).setAttribute(`alt`, getCard.offer.title);
-  pinElement.querySelector(`img`).setAttribute(`src`, getCard.author.avatar);
+  let cardInfo = getCard;
+  pinElement.querySelector(`img`).setAttribute(`alt`, cardInfo.offer.title);
+  pinElement.querySelector(`img`).setAttribute(`src`, cardInfo.author.avatar);
   pinElement.querySelector(`img`).setAttribute(`width`, `40`);
   pinElement.querySelector(`img`).setAttribute(`height`, `40`);
 
