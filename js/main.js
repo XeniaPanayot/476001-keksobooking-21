@@ -62,7 +62,7 @@ const getCardsArr = function (count_cards) {
 getCardsArr(8); // get a card 8 times
 
 // to toggle the map to/ from faded  mode
-const mapToggler = document.querySelector('.map');
+const mapToggler = document.querySelector(`.map`);
 mapToggler.classList.remove(`map--faded`);
 
 //find the template
@@ -80,7 +80,7 @@ const makeElement = function (tagName, className) {
 // take the template and define its elements
 const renderPin = function (getCard) {
   const pinElement = pinTemplate.cloneNode(true);
-  pinElement.querySelector(`img`) = makeElement('img');
+  pinElement.querySelector(`img`) = makeElement(`img`);
   pinElement.querySelector(`img`).setAttribute(`alt`, getCard.offer.title);
   pinElement.querySelector(`img`).setAttribute(`src`, getCard.author.avatar);
   pinElement.querySelector(`img`).setAttribute(`width`, `40`);
