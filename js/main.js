@@ -50,7 +50,7 @@ const getMockCard = function () {
     }
 
   };
-}
+};
 
 // to make an array of 8 cards
 const getCardsArray = function () {
@@ -58,8 +58,8 @@ const getCardsArray = function () {
   for (let i = 0; i < countCardsInArray; i++) {
     cardsArray.push(getMockCard());
   }
-return cardsArray;
-}
+  return cardsArray;
+};
 // need a variable (the result of the above function) to address cards' properties
 const cardsArray = getCardsArray();
 
