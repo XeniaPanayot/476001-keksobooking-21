@@ -1,6 +1,5 @@
 'use strict';
 
-
 const map = document.querySelector(`.map__pins`);
 const countCardsInArray = 8;
 
@@ -14,7 +13,6 @@ const CHECKIN = [`12:00`, `13:00`, `14:00`];
 const CHECKOUT = [`12:00`, `13:00`, `14:00`];
 const DESCRIPTION = [`Description1`, `Description2`, `Description3`];
 const PHOTOS = [`http://o0.github.io/assets/images/tokyo/hotel1.jpg`, `http://o0.github.io/assets/images/tokyo/hotel2.jpg`, `http://o0.github.io/assets/images/tokyo/hotel3.jpg`];
-
 
 // functions to get a random number and a random item
 const getRndInteger = function (min, max) {
@@ -62,8 +60,8 @@ const getCardsArray = function () {
   }
 return cardsArray;
 }
+// need a variable (the result of the above function) to address cards' properties
 const cardsArray = getCardsArray();
-console.log(cardsArray);
 
 // to toggle the map to/ from faded  mode
 const mapToggler = document.querySelector(`.map`);
