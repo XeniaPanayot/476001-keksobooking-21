@@ -1,5 +1,9 @@
 'use strict';
 
+
+const map = document.querySelector(`.map__pins`);
+const countCardsInArray = 8;
+
 const TITLE = [`Title1`, `Title2`, `Title3`];
 const PRICE = [100, 200, 300];
 const TYPE = [`palace`, `flat`, `house`, `bungalow`];
@@ -10,7 +14,7 @@ const CHECKIN = [`12:00`, `13:00`, `14:00`];
 const CHECKOUT = [`12:00`, `13:00`, `14:00`];
 const DESCRIPTION = [`Description1`, `Description2`, `Description3`];
 const PHOTOS = [`http://o0.github.io/assets/images/tokyo/hotel1.jpg`, `http://o0.github.io/assets/images/tokyo/hotel2.jpg`, `http://o0.github.io/assets/images/tokyo/hotel3.jpg`];
-const map = document.querySelector(`.map__pins`);
+
 
 // functions to get a random number and a random item
 const getRndInteger = function (min, max) {
@@ -22,10 +26,9 @@ const getRndItem = function (items) {
   const rndIndex = getRndInteger(0, maxIndex);
   return items[rndIndex];
 };
-getRndItem(DESCRIPTION);
 
-// the function to get a card
-const getCard = function () {
+// the function to make a card
+const getMockCard = function () {
   return {
     author: {
       avatar: `img/avatars/user` + 0 + getRndInteger(1, 8) + `.png` // строка, адрес изображения вида img/avatars/user{{xx}}.png, где {{xx}} это число от 1 до 8 с ведущим нулём. Например, 01, 02 и т. д. Адреса изображений не повторяются
@@ -44,52 +47,40 @@ const getCard = function () {
       photos: getRndItem(PHOTOS), //  массив строк случайной длины, содержащий адреса фотографий "http://o0.github.io/assets/images/tokyo/hotel1.jpg", "http://o0.github.io/assets/images/tokyo/hotel2.jpg", "http://o0.github.io/assets/images/tokyo/hotel3.jpg"
     },
     location: {
-      x: getRndInteger(), // случайное число, координата x метки на карте. Значение ограничено размерами блока, в котором перетаскивается метка.
+      x: getRndInteger(10, 750), // случайное число, координата x метки на карте. Значение ограничено размерами блока, в котором перетаскивается метка.
       y: getRndInteger(130, 630), // случайное число, координата y метки на карте от 130 до 630.
     }
 
   };
-};
+}
 
-// make an array of 8 cards
-const cardsArr = [];
-const getCardsArr = function (countCards) {
-  for (let i = 0; i < countCards; i++) {
-    cardsArr.push(getCard());
+// to make an array of 8 cards
+const getCardsArray = function () {
+  let cardsArray = [];
+  for (let i = 0; i < countCardsInArray; i++) {
+    cardsArray.push(getMockCard());
   }
-  return cardsArr;
-};
-getCardsArr(8); // get a card 8 times
+return cardsArray;
+}
+const cardsArray = getCardsArray();
+console.log(cardsArray);
 
 // to toggle the map to/ from faded  mode
 const mapToggler = document.querySelector(`.map`);
 mapToggler.classList.remove(`map--faded`);
 
-// find the template
-const pinTemplate = document.querySelector(`#pin`)
-.content
-.querySelector(`.map__pin`);
-
-// take the template and define its elements
-const renderPin = function (getCard) {
-  const pinElement = pinTemplate.cloneNode(true);
-  pinElement.querySelector(`img`).setAttribute(`alt`, getCard.offer.title);
-  pinElement.querySelector(`img`).setAttribute(`src`, getCard.author.avatar);
-  pinElement.querySelector(`img`).setAttribute(`width`, `40`);
-  pinElement.querySelector(`img`).setAttribute(`height`, `40`);
-  return pinElement;
-};
-
-// make a fragment
+// find template
+const pinTemplate = document.querySelector(`#pin`).content.querySelector(`button`);
 const fragment = document.createDocumentFragment();
-for (let i = 0; i < cardsArr.length; i++) {
-  fragment.appendChild(renderPin(cardsArr[i]));
-}
 
-// insert the pin into its DOM parent element
+// fill the template-based element with the data from the array
+for (let i = 0; i < countCardsInArray; i++) {
+  const clonedPin = pinTemplate.cloneNode(true);
+  clonedPin.style.left = cardsArray[i].location.x + `px`;
+  clonedPin.style.top = cardsArray[i].location.y + `px`;
+  const picture = clonedPin.querySelector(`img`);
+  picture.src = cardsArray[i].author.avatar;
+  picture.alt = cardsArray[i].offer.description;
+  fragment.appendChild(clonedPin);
+}
 map.appendChild(fragment);
-
-/* for (let i = 0; i < cardsArr.length; i++) {
-  fragment.appendChild(fragment[i]);
-}
-*/
