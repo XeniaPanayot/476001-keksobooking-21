@@ -96,5 +96,22 @@ disableFieldsets(avatarInput);
 for (let i = 0; i < fieldsets.length; i++) {
   disableFieldsets(fieldsets[i]);
 }
+const removeDisableFieldsets = function (elements) {
+  elements.disabled = false;
+};
 
+// remove disable from the form fields on the MAIN mouse click
+const pinButton = document.querySelector(`.map__pin--main`);
+pinButton.addEventListener(`mousedown`, mouseMainDown);
+function mouseMainDown (evt) {
+  if (typeof evt === 'object') {
+    switch (evt.button) {
+      case 0:
+        removeDisableFieldsets(avatarInput);
+        for (let i = 0; i < fieldsets.length; i++) {
+          removeDisableFieldsets(fieldsets[i]);
+        }
+    }
+  }
+};
 
