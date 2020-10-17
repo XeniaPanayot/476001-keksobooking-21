@@ -63,9 +63,9 @@ const getCardsArray = function () {
 // need a variable (the result of the above function) to address cards' properties
 const cardsArray = getCardsArray();
 
-// to toggle the map to/ from faded  mode
-const mapToggler = document.querySelector(`.map`);
-mapToggler.classList.remove(`map--faded`);
+// to toggle the map to/ from faded  mode Согласно ТЗ вызов метода отрисовки похожих объявлений нужно перенести в функцию активации,
+// const mapToggler = document.querySelector(`.map`);
+// mapToggler.classList.remove(`map--faded`);
 
 // find template
 const pinTemplate = document.querySelector(`#pin`).content.querySelector(`button`);
@@ -82,3 +82,19 @@ for (let i = 0; i < countCardsInArray; i++) {
   fragment.appendChild(clonedPin);
 }
 map.appendChild(fragment);
+
+// disable active form fields
+
+const form = document.querySelector(`.ad-form`);
+const avatarInput = form.querySelector(`.ad-form-header__input`);
+const fieldsets = form.querySelectorAll(`.ad-form__element`);
+
+const disableFieldsets = function (elements) {
+  elements.disabled = true;
+};
+disableFieldsets(avatarInput);
+for (let i = 0; i < fieldsets.length; i++) {
+  disableFieldsets(fieldsets[i]);
+}
+
+
