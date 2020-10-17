@@ -115,3 +115,13 @@ function mouseMainDown (evt) {
   }
 };
 
+// remove disabled with the keyboard
+pinButton.addEventListener(`keydown`, function (evt) {
+  if (evt.key === `Enter`) {
+    removeDisableFieldsets(avatarInput);
+        for (let i = 0; i < fieldsets.length; i++) {
+          removeDisableFieldsets(fieldsets[i]);
+        }
+  }
+});
+
