@@ -83,8 +83,7 @@ for (let i = 0; i < countCardsInArray; i++) {
 }
 map.appendChild(fragment);
 
-// disable active form fields
-
+// disable active form fields on default
 const form = document.querySelector(`.ad-form`);
 const avatarInput = form.querySelector(`.ad-form-header__input`);
 const fieldsets = form.querySelectorAll(`.ad-form__element`);
@@ -94,8 +93,9 @@ const disableFieldsets = function (elements) {
 };
 disableFieldsets(avatarInput);
 for (let i = 0; i < fieldsets.length; i++) {
-  disableFieldsets(fieldsets[i]);
+ disableFieldsets(fieldsets[i]);
 }
+
 const removeDisableFieldsets = function (elements) {
   elements.disabled = false;
 };
@@ -108,9 +108,9 @@ function mouseMainDown (evt) {
     switch (evt.button) {
       case 0:
         removeDisableFieldsets(avatarInput);
-        for (let i = 0; i < fieldsets.length; i++) {
-          removeDisableFieldsets(fieldsets[i]);
-        }
+         for (let i = 0; i < fieldsets.length; i++) {
+         removeDisableFieldsets(fieldsets[i]);
+       }
     }
   }
 };
@@ -119,9 +119,9 @@ function mouseMainDown (evt) {
 pinButton.addEventListener(`keydown`, function (evt) {
   if (evt.key === `Enter`) {
     removeDisableFieldsets(avatarInput);
-        for (let i = 0; i < fieldsets.length; i++) {
-          removeDisableFieldsets(fieldsets[i]);
-        }
+    for (let i = 0; i < fieldsets.length; i++) {
+      removeDisableFieldsets(fieldsets[i]);
+     }
   }
 });
 
