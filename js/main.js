@@ -94,7 +94,7 @@ const disableFieldsets = function (elements) {
 };
 disableFieldsets(avatarInput);
 for (let i = 0; i < fieldsets.length; i++) {
- disableFieldsets(fieldsets[i]);
+  disableFieldsets(fieldsets[i]);
 }
 
 const removeDisableFieldsets = function (elements) {
@@ -104,17 +104,17 @@ const removeDisableFieldsets = function (elements) {
 // remove disable from the form fields on the MAIN mouse click
 const pinButton = document.querySelector(`.map__pin--main`);
 pinButton.addEventListener(`mousedown`, mouseMainDown);
-function mouseMainDown (evt) {
-  if (typeof evt === 'object') {
+function mouseMainDown(evt) {
+  if (typeof evt === `object`) {
     switch (evt.button) {
       case 0:
         removeDisableFieldsets(avatarInput);
-         for (let i = 0; i < fieldsets.length; i++) {
-         removeDisableFieldsets(fieldsets[i]);
-       }
+        for (let i = 0; i < fieldsets.length; i++) {
+          removeDisableFieldsets(fieldsets[i]);
+        }
     }
   }
-};
+}
 
 // remove disabled with the keyboard
 pinButton.addEventListener(`keydown`, function (evt) {
@@ -122,19 +122,17 @@ pinButton.addEventListener(`keydown`, function (evt) {
     removeDisableFieldsets(avatarInput);
     for (let i = 0; i < fieldsets.length; i++) {
       removeDisableFieldsets(fieldsets[i]);
-     }
+    }
   }
 });
-
 
 // sizes of the pin
 const pinWidth = pinButton.offsetWidth;
 const pinHeight = pinButton.offsetHeight;
 
 // center of the pin for default position
-const pinCenterX = Math.round(pinButton.offsetLeft + pinWidth/2);
-const pinCenterY = Math.round(pinButton.offsetHeight + pinHeight/2);
-
+const pinCenterX = Math.round(pinButton.offsetLeft + pinWidth / 2);
+const pinCenterY = Math.round(pinButton.offsetHeight + pinHeight / 2);
 const addressInput = document.querySelector(`#address`);
 const pinCoordinates = [pinCenterX, pinCenterY];
 addressInput.value = pinCoordinates;
@@ -159,7 +157,7 @@ const validateTwoSelectLists = function () {
 
 formSubmit.addEventListener(`click`, function () {
   validateTwoSelectLists();
- });
+});
  formSubmit.removeEventListener(`click`, function () {
   validateTwoSelectLists();
- });
+});
