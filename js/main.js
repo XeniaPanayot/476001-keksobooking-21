@@ -158,6 +158,6 @@ const validateTwoSelectLists = function () {
 formSubmit.addEventListener(`click`, function () {
   validateTwoSelectLists();
 });
- formSubmit.removeEventListener(`click`, function () {
+formSubmit.removeEventListener(`click`, function () {
   validateTwoSelectLists();
 });
