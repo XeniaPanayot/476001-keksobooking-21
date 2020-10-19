@@ -29,7 +29,7 @@ const getRndItem = function (items) {
 const getMockCard = function () {
   return {
     author: {
-      avatar: `img/avatars/user` + 0 + getRndInteger(1, 8) + `.png` // строка, адрес изображения вида img/avatars/user{{xx}}.png, где {{xx}} это число от 1 до 8 с ведущим нулём. Например, 01, 02 и т. д. Адреса изображений не повторяются
+      avatar: `img/avatars/user` + 0 + getRndInteger(1, 7) + `.png` // строка, адрес изображения вида img/avatars/user{{xx}}.png, где {{xx}} это число от 1 до 8 с ведущим нулём. Например, 01, 02 и т. д. Адреса изображений не повторяются
     },
     offer: {
       title: getRndItem(TITLE), // строка, заголовок предложения
@@ -71,7 +71,7 @@ const cardsArray = getCardsArray();
 const pinTemplate = document.querySelector(`#pin`).content.querySelector(`button`);
 const fragment = document.createDocumentFragment();
 
-// fill the template-based element with the data from the array
+// fill the template-based pin with the data from the array
 for (let i = 0; i < countCardsInArray; i++) {
   const clonedPin = pinTemplate.cloneNode(true);
   clonedPin.style.left = cardsArray[i].location.x + `px`;
@@ -83,6 +83,7 @@ for (let i = 0; i < countCardsInArray; i++) {
 }
 map.appendChild(fragment);
 
+// DEFAULT behaviour
 // disable active form fields on default
 const form = document.querySelector(`.ad-form`);
 const avatarInput = form.querySelector(`.ad-form-header__input`);
@@ -125,3 +126,41 @@ pinButton.addEventListener(`keydown`, function (evt) {
   }
 });
 
+
+// sizes of the pin
+const pinWidth = pinButton.offsetWidth;
+const pinHeight = pinButton.offsetHeight;
+
+// center of the pin for default position
+const pinCenterX = Math.round(pinButton.offsetLeft + pinWidth/2);
+const pinCenterY = Math.round(pinButton.offsetHeight + pinHeight/2);
+
+const addressInput = document.querySelector(`#address`);
+const pinCoordinates = [pinCenterX, pinCenterY];
+addressInput.value = pinCoordinates;
+
+// validate rooms and guests
+
+const countRooms = document.querySelector(`#room_number`);
+const capacity = document.querySelector(`#capacity`);
+
+const capacityOptions = capacity.children;
+const countRoomsOptions = countRooms.children;
+const countRoomsOptionsLength = countRoomsOptions.length;
+const lastOption = countRoomsOptions.length - 1;
+console.log(capacityOptions[lastOption]);
+
+
+const formSubmit = document.querySelector(`.ad-form__submit`);
+formSubmit.addEventListener(`click`, function () {
+       if (capacity.value === capacityOptions[lastOption].value && countRooms.value === countRoomsOptions[lastOption].value) {
+        console.log(`rent a castle`);
+        countRooms.setCustomValidity(``);
+      } else if (capacity.value !== countRooms.value) {
+        console.log('inte')
+        countRooms.setCustomValidity(`Количество комнат должно соответствовать количеству гостей`);
+      } else {
+        console.log(`ok`);
+        countRooms.setCustomValidity(``);
+      }
+ })
