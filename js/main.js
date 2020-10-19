@@ -143,7 +143,6 @@ addressInput.value = pinCoordinates;
 // validate rooms and guests
 const countRooms = document.querySelector(`#room_number`);
 const capacity = document.querySelector(`#capacity`);
-
 const capacityOptions = capacity.children;
 const countRoomsOptions = countRooms.children;
 const lastOption = countRoomsOptions.length - 1;
