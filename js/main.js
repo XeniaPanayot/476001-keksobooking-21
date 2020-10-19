@@ -139,28 +139,28 @@ const addressInput = document.querySelector(`#address`);
 const pinCoordinates = [pinCenterX, pinCenterY];
 addressInput.value = pinCoordinates;
 
+// FORM VALIDATION
 // validate rooms and guests
-
 const countRooms = document.querySelector(`#room_number`);
 const capacity = document.querySelector(`#capacity`);
 
 const capacityOptions = capacity.children;
 const countRoomsOptions = countRooms.children;
-const countRoomsOptionsLength = countRoomsOptions.length;
 const lastOption = countRoomsOptions.length - 1;
-console.log(capacityOptions[lastOption]);
-
-
 const formSubmit = document.querySelector(`.ad-form__submit`);
+const validateTwoSelectLists = function () {
+  if (capacity.value === capacityOptions[lastOption].value && countRooms.value === countRoomsOptions[lastOption].value) {
+    countRooms.setCustomValidity(``);
+  } else if (capacity.value !== countRooms.value) {
+    countRooms.setCustomValidity(`Количество комнат должно соответствовать количеству гостей`);
+  } else {
+    countRooms.setCustomValidity(``);
+  }
+};
+
 formSubmit.addEventListener(`click`, function () {
-       if (capacity.value === capacityOptions[lastOption].value && countRooms.value === countRoomsOptions[lastOption].value) {
-        console.log(`rent a castle`);
-        countRooms.setCustomValidity(``);
-      } else if (capacity.value !== countRooms.value) {
-        console.log('inte')
-        countRooms.setCustomValidity(`Количество комнат должно соответствовать количеству гостей`);
-      } else {
-        console.log(`ok`);
-        countRooms.setCustomValidity(``);
-      }
- })
+  validateTwoSelectLists();
+ });
+ formSubmit.removeEventListener(`click`, function () {
+  validateTwoSelectLists();
+ });
