@@ -1,8 +1,12 @@
 'use strict';
 
+// В main.js должны остаться только вызовы методов других модулей или код, который необходим
+// для работы других модулей.
+// В тех модулях, которые имеют внешний интерфейс, экспортируйте то, что используется снаружи,
+// в глобальную область видимости, записав эти значения в объект window.
+
 const map = document.querySelector(`.map__pins`);
 const countCardsInArray = 8;
-
 const TITLE = [`Title1`, `Title2`, `Title3`];
 const PRICE = [100, 200, 300];
 const TYPE = [`palace`, `flat`, `house`, `bungalow`];
@@ -14,6 +18,7 @@ const CHECKOUT = [`12:00`, `13:00`, `14:00`];
 const DESCRIPTION = [`Description1`, `Description2`, `Description3`];
 const PHOTOS = [`http://o0.github.io/assets/images/tokyo/hotel1.jpg`, `http://o0.github.io/assets/images/tokyo/hotel2.jpg`, `http://o0.github.io/assets/images/tokyo/hotel3.jpg`];
 
+// *** util.js
 // functions to get a random number and a random item
 const getRndInteger = function (min, max) {
   return Math.round(Math.random() * (max - min + 1)) + min;
@@ -25,6 +30,7 @@ const getRndItem = function (items) {
   return items[rndIndex];
 };
 
+// *** card.js
 // the function to make a card
 const getMockCard = function () {
   return {
