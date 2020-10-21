@@ -20,6 +20,10 @@
       const activePinPointerY = Math.round(activePinHeight / 2);
       console.log(activePinPointerX);
       console.log(activePinPointerY);
+      const addressInput = document.querySelector(`#address`);
+      const pinCoordinates = [activePinPointerX, activePinPointerY];
+
+      addressInput.value = pinCoordinates;
     }
   };
 activePin();
