@@ -39,7 +39,7 @@
 
     };
   };
-// to make an array of 8 cards
+  // to make an array of 8 cards
   const getCardsArray = function () {
     let cardsArray = [];
     for (let i = 0; i < countCardsInArray; i++) {

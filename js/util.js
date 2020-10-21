@@ -16,16 +16,16 @@
   //     action();
   //   }
   // };
-  // const isEscEvent = function (evt, action) {
-  //   if (evt.key === `Escape`) {
-  //     action();
-  //   }
-  // }
+  const isEscEvent = function (evt, action) {
+    if (evt.key === `Escape`) {
+      action();
+    }
+  };
 
   window.util = {
     getRndInteger: getRndInteger,
     getRndItem: getRndItem,
     // isEnterEvent: isEnterEvent,
-    // isEscEvent: isEscEvent
+    isEscEvent: isEscEvent
   };
 })();

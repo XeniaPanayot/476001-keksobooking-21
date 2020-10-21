@@ -37,7 +37,7 @@
   }
 
   pinButton.addEventListener(`keydown`, function () {
-    window.util.isEscapeEvent;
+    window.util.isEscapeEvent();
     removeDisableFormInputs();
   });
 })();
