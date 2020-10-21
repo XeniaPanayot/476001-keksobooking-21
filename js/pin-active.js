@@ -1,5 +1,5 @@
 'use strict';
-// sizes of the pin for the ACTIVE map position
+// модуль, который отрисовывает метку для активного состояния карты и передает координаты в соответствующий инпут формы
 
 (function () {
   // const map = document.querySelector(`.map__pins`);

@@ -1,4 +1,5 @@
 'use strict';
+// модуль, который создает прототип карточки, массив с заданным кол-вом
 (function () {
   const countCardsInArray = 8;
   const TITLE = [`Title1`, `Title2`, `Title3`];
@@ -12,7 +13,7 @@
   const DESCRIPTION = [`Description1`, `Description2`, `Description3`];
   const PHOTOS = [`http://o0.github.io/assets/images/tokyo/hotel1.jpg`, `http://o0.github.io/assets/images/tokyo/hotel2.jpg`, `http://o0.github.io/assets/images/tokyo/hotel3.jpg`];
 
-  // function to make a card
+// function to make a card
 const getMockCard = function () {
   return {
     author: {
@@ -38,7 +39,6 @@ const getMockCard = function () {
 
   };
 };
-// *** to main.js??
 // to make an array of 8 cards
 const getCardsArray = function () {
   let cardsArray = [];

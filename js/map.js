@@ -1,34 +1,36 @@
 'use strict';
-// модуль, который управляет карточками объявлений и метками: добавляет на страницу нужную карточку,
-// отрисовывает метки и осуществляет взаимодействие карточки и метки на карте;
+// модуль, который создает и отменяет события для переклюения состояния карты (неактивное по дефолту, активное - по клику на пин)
+
 (function () {
-// to make an array of 8 cards
-const getCardsArray = function () {
-    let cardsArray = [];
-    for (let i = 0; i < window.countCardsInArray; i++) {
-      cardsArray.push(window.card.getMockCard());
-    }
-    return cardsArray;
-  };
-// need a variable (the result of the above function) to address cards' properties
-const cardsArray = getCardsArray();
+// // to make an array of 8 cards
+// const getCardsArray = function () {
+//     let cardsArray = [];
+//     for (let i = 0; i < window.countCardsInArray; i++) {
+//       cardsArray.push(window.card.getMockCard());
+//     }
+//     return cardsArray;
+//   };
 
-const map = document.querySelector(`.map__pins`);
-  // find template
-  const pinTemplate = document.querySelector(`#pin`).content.querySelector(`button`);
-  const fragment = document.createDocumentFragment();
+// const cardsArray = getCardsArray(); // need a variable (the result of the above function) to address cards' properties
 
-// fill the template-based pin with the data from the array
-for (let i = 0; i < window.countCardsInArray; i++) {
-  const clonedPin = pinTemplate.cloneNode(true);
-  clonedPin.style.left = cardsArray[i].location.x + `px`;
-  clonedPin.style.top = cardsArray[i].location.y + `px`;
-  const picture = clonedPin.querySelector(`img`);
-  picture.src = cardsArray[i].author.avatar;
-  picture.alt = cardsArray[i].offer.description;
-  fragment.appendChild(clonedPin);
-}
-map.appendChild(fragment);
+
+// // модуль, который отрисовывает метку на основе шаблона
+// const map = document.querySelector(`.map__pins`);
+//   // find template
+//   const pinTemplate = document.querySelector(`#pin`).content.querySelector(`button`);
+//   const fragment = document.createDocumentFragment();
+
+// // fill the template-based pin with the data from the array
+// for (let i = 0; i < window.countCardsInArray; i++) {
+//   const clonedPin = pinTemplate.cloneNode(true);
+//   clonedPin.style.left = cardsArray[i].location.x + `px`;
+//   clonedPin.style.top = cardsArray[i].location.y + `px`;
+//   const picture = clonedPin.querySelector(`img`);
+//   picture.src = cardsArray[i].author.avatar;
+//   picture.alt = cardsArray[i].offer.description;
+//   fragment.appendChild(clonedPin);
+// }
+// map.appendChild(fragment);
 
 // DEFAULT behaviour
 // disable active form fields on default

@@ -1,6 +1,5 @@
 'use strict';
 
-// util.js
 // functions to get a random number and a random item
 (function () {
   const getRndInteger = function (min, max) {
@@ -12,21 +11,21 @@
     return items[rndIndex];
   };
 
-  const isEnterEvent = function (evt, action) {
-    if (evt.key === `Enter`) {
-      action();
-    }
-  };
-  const isEscEvent = function (evt, action) {
-    if (evt.key === `Escape`) {
-      action();
-    }
-  }
+  // const isEnterEvent = function (evt, action) {
+  //   if (evt.key === `Enter`) {
+  //     action();
+  //   }
+  // };
+  // const isEscEvent = function (evt, action) {
+  //   if (evt.key === `Escape`) {
+  //     action();
+  //   }
+  // }
 
     window.util = {
       getRndInteger: getRndInteger,
       getRndItem: getRndItem,
-      isEnterEvent: isEnterEvent,
-      isEscEvent: isEscEvent
+      // isEnterEvent: isEnterEvent,
+      // isEscEvent: isEscEvent
     };
 })();
