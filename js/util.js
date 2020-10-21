@@ -22,10 +22,10 @@
   //   }
   // }
 
-    window.util = {
-      getRndInteger: getRndInteger,
-      getRndItem: getRndItem,
-      // isEnterEvent: isEnterEvent,
-      // isEscEvent: isEscEvent
-    };
+  window.util = {
+    getRndInteger: getRndInteger,
+    getRndItem: getRndItem,
+    // isEnterEvent: isEnterEvent,
+    // isEscEvent: isEscEvent
+  };
 })();

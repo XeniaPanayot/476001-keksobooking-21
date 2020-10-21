@@ -3,14 +3,14 @@
 // FORM VALIDATION
 // validate rooms and guests
 
-(function() {
+(function () {
   const countRooms = document.querySelector(`#room_number`);
   const capacity = document.querySelector(`#capacity`);
   const capacityOptions = capacity.children;
   const countRoomsOptions = countRooms.children;
   const lastOption = countRoomsOptions.length - 1;
   const formSubmit = document.querySelector(`.ad-form__submit`);
-  const roomsMismatchMessage = `Количество комнат должно соответствовать количеству гостей`
+  const roomsMismatchMessage = `Количество комнат должно соответствовать количеству гостей`;
 
   const validateTwoSelectLists = function (selectOne, selectTwo, selectOneOptions, selectTwoOptions, mismatchMessage) {
     if (selectOne.value === selectOneOptions[lastOption].value && selectTwo.value === selectTwoOptions[lastOption].value) {
