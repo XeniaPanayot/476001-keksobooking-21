@@ -10,7 +10,6 @@
     const rndIndex = getRndInteger(0, maxIndex);
     return items[rndIndex];
   };
-
   // const isEnterEvent = function (evt, action) {
   //   if (evt.key === `Enter`) {
   //     action();
@@ -21,7 +20,6 @@
       action();
     }
   };
-
   window.util = {
     getRndInteger: getRndInteger,
     getRndItem: getRndItem,
