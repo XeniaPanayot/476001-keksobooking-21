@@ -7,8 +7,8 @@
 // *** card.js
 
 // to toggle the map to/ from faded  mode Согласно ТЗ вызов метода отрисовки похожих объявлений нужно перенести в функцию активации,
-// const mapToggler = document.querySelector(`.map`);
-// mapToggler.classList.remove(`map--faded`);
+const mapToggler = document.querySelector(`.map`);
+mapToggler.classList.remove(`map--faded`);
 
 // *** form.js
 // *** pin.js
