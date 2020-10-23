@@ -19,13 +19,16 @@
 (function () {
   const map = document.querySelector(`.map__pins`);
   const pinButton = document.querySelector(`.map__pin--main`);
+  const addressInput = document.querySelector(`#address`);
 
   pinButton.addEventListener(`mousedown`, function (evt) {
     evt.preventDefault();
     let startCoordinates = {
-      x: evt.clientX,
-      y: evt.clientY
+      x: evt.clientX + window.pin.activePinX,
+      y: evt.clientY + window.pin.activePinY
     };
+    addressInput.value = [startCoordinates.x, startCoordinates.y];
+
     const onMouseMove = function (moveEvt) {
       moveEvt.preventDefault();
       const shift = {
@@ -36,6 +39,10 @@
         x: moveEvt.clientX,
         y: moveEvt.clientY
       };
+      console.log(startCoordinates.x, startCoordinates.y);
+
+      addressInput.value = [startCoordinates.x, startCoordinates.y];
+
       pinButton.style.top = (pinButton.offsetTop - shift.y) + `px`;
       pinButton.style.left = (pinButton.offsetLeft - shift.x) + `px`;
     }
@@ -47,10 +54,8 @@
       document.removeEventListener(`mouseup`, onMouseUp);
     };
 
-
     document.addEventListener(`mousemove`, onMouseMove);
     document.addEventListener(`mouseup`, onMouseUp);
-
 
   });
 
