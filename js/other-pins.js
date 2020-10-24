@@ -12,7 +12,7 @@
 
 (function () {
   const map = document.querySelector(`.map__pins`);
-  const pins = document.querySelectorAll(`.map-pin`);
+  // const pins = document.querySelectorAll(`.map-pin`);
   const popupCardTemplate = document.querySelector(`#card`).content.querySelector(`.map__card`);
   const fragment = document.createDocumentFragment();
 
@@ -32,7 +32,7 @@
     price.textContent = cardFromCardsArray.offer.price;
     const type = clonedPopupCardTemplate.querySelector(`.popup__type`);
     type.textContent = cardFromCardsArray.offer.type;
-    const roomsAndGuests= clonedPopupCardTemplate.querySelector(`.popup__text--capacity`);
+    const roomsAndGuests = clonedPopupCardTemplate.querySelector(`.popup__text--capacity`);
     roomsAndGuests.textContent = cardFromCardsArray.offer.rooms + ` rooms for ` + cardFromCardsArray.offer.guests;
     const checkinAndCheckout = clonedPopupCardTemplate.querySelector(`.popup__text--time`);
     checkinAndCheckout.textContent = `Заезд после ` + cardFromCardsArray.offer.checkin + `, выезд до ` + cardFromCardsArray.offer.checkout;
@@ -45,10 +45,10 @@
 
     // };
     if (cardFromCardsArray.offer.features !== `wifi`) {
-      console.log(`inte wifi`);
+      // console.log(`inte wifi`);
       featuresItem[0].remove();
     } else if (cardFromCardsArray.offer.features !== `dishwasher`) {
-      console.log(`no dishwasher`)
+      // console.log(`no dishwasher`)
       featuresItem[1].remove();
     } else if (cardFromCardsArray.offer.features === `parking`) {
       // console.log(`got parking`);
@@ -58,7 +58,7 @@
       // console.log(`got elevator`);
     } else if (cardFromCardsArray.offer.features === `conditioner`) {
       // console.log(`got conditioner`);
-    };
+    }
 
     const description = clonedPopupCardTemplate.querySelector(`.popup__description`);
     description.textContent = cardFromCardsArray.offer.description;
@@ -67,8 +67,6 @@
     picture.src = cardFromCardsArray.offer.photos;
     picture.alt = cardFromCardsArray.offer.description;
     fragment.appendChild(clonedPopupCardTemplate);
-  };
+  }
   map.appendChild(fragment);
-
-
 })();
