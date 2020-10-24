@@ -36,7 +36,7 @@
 
     const onMouseMove = function (moveEvt) {
       moveEvt.preventDefault();
-        if (isDragged) {
+      if (isDragged) {
         // put the pin to the new location
         const relocate = function (newCoordinates) {
           pinButton.style.left = newCoordinates.x + `px`;
@@ -58,7 +58,7 @@
           } else if (startCoordinates.y > limits.top) {
             newCoordinates.y = startCoordinates.y;
           }
-        relocate(newCoordinates);
+          relocate(newCoordinates);
         };
         getNewCoordinates();
       }
