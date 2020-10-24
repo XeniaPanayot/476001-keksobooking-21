@@ -19,8 +19,6 @@
       const addressInput = document.querySelector(`#address`);
 
       const pinCoordinates = [pinX, pinY];
-      console.log(activePin.offsetLeft);
-      console.log(activePinPointerX);
 
       addressInput.value = pinCoordinates;
 
