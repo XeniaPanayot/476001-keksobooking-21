@@ -1,13 +1,26 @@
 'use strict';
-// модуль, который отрисовывает метку на основе шаблона и передает координаты в соответствующий инпут формы
+// модуль, который отрисовывает метки предложений на основе шаблона и передает координаты большой метки в соответствующий инпут формы
 
 (function () {
   const map = document.querySelector(`.map__pins`);
   const pinTemplate = document.querySelector(`#pin`).content.querySelector(`button`);
-  const fragment = document.createDocumentFragment();
 
-  // fill the template-based pin with the data from the array
-  for (let i = 0; i < window.card.countCardsInArray; i++) {
+  // код, который получает данные с сервера
+  const onSuccess = function (data) {
+    console.log(`data received` + data);
+
+  };
+  const onError = function () {
+    console.log(`Err message`);
+  }
+
+  // const fragment = document.createDocumentFragment();
+
+  // // код, который содает маленькие пины
+  window.load(function () {
+    const fragment = document.createDocumentFragment();
+
+  for (let i = 0; i < 8; i++) {
     const clonedPin = pinTemplate.cloneNode(true);
     clonedPin.style.left = window.card.cardsArray[i].location.x + `px`;
     clonedPin.style.top = window.card.cardsArray[i].location.y + `px`;
@@ -17,7 +30,11 @@
     fragment.appendChild(clonedPin);
   }
   map.appendChild(fragment);
+  }, /*onError*/function () {});
 
+
+
+  // код, который размещает большой дефолтный пин
   const pinButton = document.querySelector(`.map__pin--main`);
 
   // sizes of the pin for DEFAULT position
