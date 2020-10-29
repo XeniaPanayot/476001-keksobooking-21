@@ -14,22 +14,23 @@ mapToggler.classList.remove(`map--faded`);
 // *** pin.js
 // form-validation.js
     // код, который получает данные с сервера
-    const onSuccess = function (data) {
-      const getCardsArray = function () {
-        let cardsArray = [];
-        for (let i = 0; i < 8; i++) {
-          cardsArray.push(xhr.response[i]);
-        }
-        return cardsArray;
-      };
-      const cardsArray = getCardsArray();
-        console.log(cardsArray);
+//     const onSuccess = function (data) {
+//       const getCardsArray = function () {
+//         let cardsArray = [];
+//         for (let i = 0; i < 8; i++) {
+//           cardsArray.push(xhr.response[i]);
+//         }
+//         return cardsArray;
+//       };
+//       const cardsArray = getCardsArray();
+//         console.log(cardsArray);
 
-        window.card = {
-          cardsArray: cardsArray,
-        };
-};
-    const onError = function () {
-      console.log(`Err message`);
-    }
-// window.load(`https://21.javascript.pages.academy/keksobooking/data`, onSuccess, onError);
+//         window.card = {
+//           cardsArray: cardsArray,
+//         };
+// };
+//     const onError = function () {
+//       console.log(`Err message`);
+//     }
+window.load(`https://21.javascript.pages.academy/keksobooking/data`);
+// console.log(window.smallPins());

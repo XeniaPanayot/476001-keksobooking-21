@@ -17,21 +17,6 @@
   // const fragment = document.createDocumentFragment();
 
   // // код, который содает маленькие пины
-  window.load(function () {
-    const fragment = document.createDocumentFragment();
-
-  for (let i = 0; i < 8; i++) {
-    const clonedPin = pinTemplate.cloneNode(true);
-    clonedPin.style.left = window.card.cardsArray[i].location.x + `px`;
-    clonedPin.style.top = window.card.cardsArray[i].location.y + `px`;
-    const picture = clonedPin.querySelector(`img`);
-    picture.src = window.card.cardsArray[i].author.avatar;
-    picture.alt = window.card.cardsArray[i].offer.description;
-    fragment.appendChild(clonedPin);
-  }
-  map.appendChild(fragment);
-  }, /*onError*/function () {});
-
 
 
   // код, который размещает большой дефолтный пин
