@@ -27,21 +27,33 @@
   const checkinTime = document.querySelector(`#timein`);
   const checkoutTime = document.querySelector(`#timeout`);
 
-  const getSelectedCheckin = function () {
-    let selectedCheckin = checkinTime.options[checkinTime.selectedIndex];
-    for (let i = 0; i < checkinTime.options.length; i++) {
-      selectedCheckin = checkinTime.options[i];
-      if (selectedCheckin.selected === true) {
+  // const getSelectedCheckin = function () {
+  //   let selectedCheckin = checkinTime.options[checkinTime.selectedIndex];
+  //   for (let i = 0; i < checkinTime.options.length; i++) {
+  //     selectedCheckin = checkinTime.options[i];
+  //     if (selectedCheckin.selected === true) {
+  //       break;
+  //     };
+  //   };
+  //   return selectedCheckin;
+  // };
+
+  const getSelectedOption = function (selectName) {
+    let selectedOption = selectName.options[selectName.selectedIndex];
+    for (let i = 0; i < selectName.options.length; i++) {
+      selectedOption = selectName.options[i];
+      if (selectedOption.selected === true) {
         break;
       };
     };
-    return selectedCheckin;
+    return selectedOption;
   };
 
 
-  const syncTwoInputs = function () {
+
+  const adjustCheckout = function () {
     checkoutTime.options.length = 0;
-    const selectedCheckinOption = getSelectedCheckin();
+    const selectedCheckinOption = getSelectedOption(checkinTime);
     console.log(selectedCheckinOption.value);
 
     const newOption = document.createElement(`option`);
@@ -50,13 +62,30 @@
       checkoutTime.appendChild(newOption);
     };
 
+    const adjustCheckin = function () {
+      checkinTime.options.length = 0;
+      const selectedCheckoutOption = getSelectedOption(checkoutTime);
+      console.log(selectedCheckoutOption.value);
+
+      const newOption = document.createElement(`option`);
+        newOption.value = selectedCheckoutOption.value;
+        newOption.text = `После ` + selectedCheckoutOption.value;
+        checkinTime.appendChild(newOption);
+      };
+
+
 
   checkinTime.addEventListener(`change`, function (evt) {
     evt.preventDefault();
-    syncTwoInputs();
+    adjustCheckout();
   });
   checkinTime.removeEventListener(`change`, function (evt) {
-    syncTwoInputs();
+    adjustCheckout();
+  });
+
+  checkoutTime.addEventListener(`change`, function (evt) {
+    evt.preventDefault();
+    adjustCheckin();
   });
 
 
