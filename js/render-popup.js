@@ -34,7 +34,6 @@
   for (let i = 0; i < cardFromCardsArray.offer.features.length; i++) {
     const featureElement = document.createElement(`li`);
     const feature = cardFromCardsArray.offer.features[i];
-    console.log(feature)
 
     featureElement.className = `popup__feature popup__feature--${feature}`;
     featuresList.appendChild(featureElement);

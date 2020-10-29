@@ -22,6 +22,44 @@
     }
   };
 
+
+  // validate that Checkin = Checkout
+  const checkinTime = document.querySelector(`#timein`);
+  const checkoutTime = document.querySelector(`#timeout`);
+
+  const getSelectedCheckin = function () {
+    let selectedCheckin = checkinTime.options[checkinTime.selectedIndex];
+    for (let i = 0; i < checkinTime.options.length; i++) {
+      selectedCheckin = checkinTime.options[i];
+      if (selectedCheckin.selected === true) {
+        break;
+      };
+    };
+    return selectedCheckin;
+  };
+
+
+  const syncTwoInputs = function () {
+    checkoutTime.options.length = 0;
+    const selectedCheckinOption = getSelectedCheckin();
+    console.log(selectedCheckinOption.value);
+
+    const newOption = document.createElement(`option`);
+      newOption.value = selectedCheckinOption.value;
+      newOption.text = `Выезд до ` + selectedCheckinOption.value;
+      checkoutTime.appendChild(newOption);
+    };
+
+
+  checkinTime.addEventListener(`change`, function (evt) {
+    evt.preventDefault();
+    syncTwoInputs();
+  });
+  checkinTime.removeEventListener(`change`, function (evt) {
+    syncTwoInputs();
+  });
+
+
   formSubmit.addEventListener(`click`, function () {
     validateTwoSelectLists(capacity, countRooms, capacityOptions, countRoomsOptions, roomsMismatchMessage);
   });

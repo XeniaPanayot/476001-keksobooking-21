@@ -31,7 +31,6 @@
           const onSuccess = function () {
             // вызвать функцию создания массива на основе данных из ответа сервера
             window.load.cardsArray = getCardsArray(xhr.response);
-            console.log(window.load.cardsArray[1]);
 
             // вызвать функцию отрисовки меток на карте
             window.renderPin.renderSmallPins();
