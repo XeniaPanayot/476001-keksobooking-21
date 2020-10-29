@@ -16,8 +16,8 @@
     return cardsArray;
   };
 
-  const onError = function () {
-    console.log(`Err message`);
+  const onError = function (message) {
+    console.error(message);
   }
   window.load = function (URL, onSuccess, onError) {
     const xhr = new XMLHttpRequest();
@@ -57,8 +57,19 @@
       if (error) {
         onError(error);
       };
-
     });
+
+    // если нет интернета
+    xhr.addEventListener(`error`, function() {
+      onError(`Нет соединенения`);
+    });
+
+    // если грузится дольше 10 секунд
+    xhr.timeout = 10000;
+    xhr.addEventListener(`timeout`, function () {
+      onError(`Запрос не успел выполниться за ` +xhr.timeout + `милисекунд`);
+    });
+
     xhr.open(`GET`, `https://21.javascript.pages.academy/keksobooking/data`);
     xhr.send();
   }
