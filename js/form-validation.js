@@ -1,15 +1,31 @@
 'use strict';
 
 // FORM VALIDATION
-// validate rooms and guests
-
+// validate Rooms vs Guests
 (function () {
+  const formSubmit = document.querySelector(`.ad-form__submit`);
+
+  // customize validation message for the title
+  const offerTitle = document.querySelector(`#title`);
+  const offerTitleMinLength = offerTitle.getAttribute(`minlength`);
+  const offerTitleMaxLength = offerTitle.getAttribute(`maxlength`);
+  console.log(offerTitleMaxLength);
+
+  offerTitle.addEventListener(`input`, function (evt) {
+    evt.preventDefault();
+    if (offerTitle.value < offerTitleMinLength) {
+      offerTitle.setCustomValidity(`Заголовок должен содержать не менее 30 символов`);
+    } else if (offerTitle.value > offerTitleMaxLength) {
+      offerTitle.setCustomValidity(`Максимальная длина заголовка - 100 символов`);
+    } else {offerTitle.setCustomValidity(``);};
+  });
+
+  // validate Rooms vs Guests
   const countRooms = document.querySelector(`#room_number`);
   const capacity = document.querySelector(`#capacity`);
   const capacityOptions = capacity.children;
   const countRoomsOptions = countRooms.children;
   const lastOption = countRoomsOptions.length - 1;
-  const formSubmit = document.querySelector(`.ad-form__submit`);
   const roomsMismatchMessage = `Количество комнат должно соответствовать количеству гостей`;
 
   const validateTwoSelectLists = function (selectOne, selectTwo, selectOneOptions, selectTwoOptions, mismatchMessage) {
