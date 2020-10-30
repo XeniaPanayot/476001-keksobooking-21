@@ -3,10 +3,6 @@
 // модуль, который отвечает за взаимодействие с сервером: запросы и ошибки
 (function () {
   const URL = `https://21.javascript.pages.academy/keksobooking/data`;
-  const onSuccess = function (data) {
-    console.log(`data received` + data);
-  };
-
   //  получить массив карточек
   const getCardsArray = function (data) {
     let cardsArray = [];
@@ -16,10 +12,7 @@
     return cardsArray;
   };
 
-  const onError = function (message) {
-    console.error(message);
-  }
-  window.load = function (URL, onSuccess, onError) {
+  window.load = function (URL, onError) {
     const xhr = new XMLHttpRequest();
     xhr.responseType = `json`;
 
@@ -55,21 +48,21 @@
       }
       if (error) {
         onError(error);
-      };
+      }
     });
 
     // если нет интернета
-    xhr.addEventListener(`error`, function() {
+    xhr.addEventListener(`error`, function () {
       onError(`Нет соединенения`);
     });
 
     // если грузится дольше 10 секунд
     xhr.timeout = 10000;
     xhr.addEventListener(`timeout`, function () {
-      onError(`Запрос не успел выполниться за ` +xhr.timeout + `милисекунд`);
+      onError(`Запрос не успел выполниться за ` + xhr.timeout + `милисекунд`);
     });
 
-    xhr.open(`GET`, `https://21.javascript.pages.academy/keksobooking/data`);
+    xhr.open(`GET`, URL);
     xhr.send();
-  }
+  };
 })();

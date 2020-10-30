@@ -9,7 +9,6 @@
   const offerTitle = document.querySelector(`#title`);
   const offerTitleMinLength = offerTitle.getAttribute(`minlength`);
   const offerTitleMaxLength = offerTitle.getAttribute(`maxlength`);
-  console.log(offerTitleMaxLength);
 
   offerTitle.addEventListener(`input`, function (evt) {
     evt.preventDefault();
@@ -17,7 +16,9 @@
       offerTitle.setCustomValidity(`Заголовок должен содержать не менее 30 символов`);
     } else if (offerTitle.value > offerTitleMaxLength) {
       offerTitle.setCustomValidity(`Максимальная длина заголовка - 100 символов`);
-    } else {offerTitle.setCustomValidity(``);};
+    } else {
+      offerTitle.setCustomValidity(``);
+    }
   });
 
   // validate Rooms vs Guests
@@ -64,7 +65,6 @@
   const adjustCheckout = function () {
     checkoutTime.options.length = 0;
     const selectedCheckinOption = getSelectedOption(checkinTime);
-    console.log(selectedCheckinOption.value);
 
   const newOption = document.createElement(`option`);
     newOption.value = selectedCheckinOption.value;
@@ -75,7 +75,6 @@
   const adjustCheckin = function () {
     checkinTime.options.length = 0;
     const selectedCheckoutOption = getSelectedOption(checkoutTime);
-    console.log(selectedCheckoutOption.value);
 
   const newOption = document.createElement(`option`);
     newOption.value = selectedCheckoutOption.value;
