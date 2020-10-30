@@ -61,12 +61,10 @@
       });
     };
     for (let i = 0; i < 8; i++) {
-      popupCloseHandler(popup[i])
+      popupCloseHandler(popup[i]);
     }
-
   };
   window.renderPopup = {
     renderOfferPopup
   };
-
 })();

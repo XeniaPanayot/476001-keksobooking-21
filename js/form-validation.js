@@ -12,9 +12,9 @@
 
   offerTitle.addEventListener(`input`, function (evt) {
     evt.preventDefault();
-    if (offerTitle.value < offerTitleMinLength) {
+    if (offerTitle.value.length < offerTitleMinLength) {
       offerTitle.setCustomValidity(`Заголовок должен содержать не менее 30 символов`);
-    } else if (offerTitle.value > offerTitleMaxLength) {
+    } else if (offerTitle.value.length > offerTitleMaxLength) {
       offerTitle.setCustomValidity(`Максимальная длина заголовка - 100 символов`);
     } else {
       offerTitle.setCustomValidity(``);
@@ -57,8 +57,8 @@
       selectedOption = selectName.options[i];
       if (selectedOption.selected === true) {
         break;
-      };
-    };
+      }
+    }
     return selectedOption;
   };
 
@@ -66,7 +66,7 @@
     checkoutTime.options.length = 0;
     const selectedCheckinOption = getSelectedOption(checkinTime);
 
-  const newOption = document.createElement(`option`);
+    const newOption = document.createElement(`option`);
     newOption.value = selectedCheckinOption.value;
     newOption.text = `Выезд до ` + selectedCheckinOption.value;
     checkoutTime.appendChild(newOption);
@@ -76,7 +76,7 @@
     checkinTime.options.length = 0;
     const selectedCheckoutOption = getSelectedOption(checkoutTime);
 
-  const newOption = document.createElement(`option`);
+    const newOption = document.createElement(`option`);
     newOption.value = selectedCheckoutOption.value;
     newOption.text = `После ` + selectedCheckoutOption.value;
     checkinTime.appendChild(newOption);
@@ -86,7 +86,7 @@
     evt.preventDefault();
     adjustCheckout();
   });
-  checkinTime.removeEventListener(`change`, function (evt) {
+  checkinTime.removeEventListener(`change`, function () {
     adjustCheckout();
   });
 
@@ -96,31 +96,29 @@
   });
 
 
-// Accomodation Type vs Price
+  // Accomodation Type vs Price
   const accomodationType = document.querySelector(`#type`);
   const accomodationPrice = document.querySelector(`#price`);
   const setMinPrice = function (minPrice) {
-  accomodationPrice.setAttribute(`min`, minPrice);
-  accomodationPrice.setAttribute(`placeholder`, minPrice);
-  accomodationPrice.setCustomValidity(`Минимальная цена для выбранного типа жилья - ` + minPrice);
-  };
-
-  accomodationType.addEventListener(`change`, function () {
-  const selectedAccomodationType = getSelectedOption(accomodationType);
-
-  const validateAccomodationPrice = function () {
-    if (selectedAccomodationType.value === `flat`) {
-      setMinPrice(`1000`);
-    } else if (selectedAccomodationType.value === `house`) {
-      setMinPrice(`5000`);
-    } else if (selectedAccomodationType.value === `palace`) {
-      setMinPrice(`10000`);
-    } else {
-      accomodationPrice.setCustomValidity(``);
+    accomodationPrice.setAttribute(`min`, minPrice);
+    accomodationPrice.setAttribute(`placeholder`, minPrice);
+    accomodationPrice.setCustomValidity(`Минимальная цена для выбранного типа жилья - ` + minPrice);
     };
-  };
-  validateAccomodationPrice();
+
+    accomodationType.addEventListener(`change`, function () {
+    const selectedAccomodationType = getSelectedOption(accomodationType);
+
+    const validateAccomodationPrice = function () {
+      if (selectedAccomodationType.value === `flat`) {
+        setMinPrice(`1000`);
+      } else if (selectedAccomodationType.value === `house`) {
+        setMinPrice(`5000`);
+      } else if (selectedAccomodationType.value === `palace`) {
+        setMinPrice(`10000`);
+      } else {
+        accomodationPrice.setCustomValidity(``);
+      }
+    };
+    validateAccomodationPrice();
   });
-
-
 })();

@@ -12,7 +12,7 @@
     return cardsArray;
   };
 
-  window.load = function (URL, onError) {
+  window.load = function (url, onError) {
     const xhr = new XMLHttpRequest();
     xhr.responseType = `json`;
 
