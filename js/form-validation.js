@@ -103,9 +103,9 @@
     accomodationPrice.setAttribute(`min`, minPrice);
     accomodationPrice.setAttribute(`placeholder`, minPrice);
     accomodationPrice.setCustomValidity(`Минимальная цена для выбранного типа жилья - ` + minPrice);
-    };
+  };
 
-    accomodationType.addEventListener(`change`, function () {
+  accomodationType.addEventListener(`change`, function () {
     const selectedAccomodationType = getSelectedOption(accomodationType);
 
     const validateAccomodationPrice = function () {
