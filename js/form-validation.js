@@ -22,21 +22,17 @@
     }
   };
 
+  formSubmit.addEventListener(`click`, function () {
+    validateTwoSelectLists(capacity, countRooms, capacityOptions, countRoomsOptions, roomsMismatchMessage);
+  });
+  formSubmit.removeEventListener(`click`, function () {
+    validateTwoSelectLists(capacity, countRooms, capacityOptions, countRoomsOptions, roomsMismatchMessage);
+  });
+
 
   // validate that Checkin = Checkout
   const checkinTime = document.querySelector(`#timein`);
   const checkoutTime = document.querySelector(`#timeout`);
-
-  // const getSelectedCheckin = function () {
-  //   let selectedCheckin = checkinTime.options[checkinTime.selectedIndex];
-  //   for (let i = 0; i < checkinTime.options.length; i++) {
-  //     selectedCheckin = checkinTime.options[i];
-  //     if (selectedCheckin.selected === true) {
-  //       break;
-  //     };
-  //   };
-  //   return selectedCheckin;
-  // };
 
   const getSelectedOption = function (selectName) {
     let selectedOption = selectName.options[selectName.selectedIndex];
@@ -49,31 +45,27 @@
     return selectedOption;
   };
 
-
-
   const adjustCheckout = function () {
     checkoutTime.options.length = 0;
     const selectedCheckinOption = getSelectedOption(checkinTime);
     console.log(selectedCheckinOption.value);
 
-    const newOption = document.createElement(`option`);
-      newOption.value = selectedCheckinOption.value;
-      newOption.text = `Выезд до ` + selectedCheckinOption.value;
-      checkoutTime.appendChild(newOption);
-    };
+  const newOption = document.createElement(`option`);
+    newOption.value = selectedCheckinOption.value;
+    newOption.text = `Выезд до ` + selectedCheckinOption.value;
+    checkoutTime.appendChild(newOption);
+  };
 
-    const adjustCheckin = function () {
-      checkinTime.options.length = 0;
-      const selectedCheckoutOption = getSelectedOption(checkoutTime);
-      console.log(selectedCheckoutOption.value);
+  const adjustCheckin = function () {
+    checkinTime.options.length = 0;
+    const selectedCheckoutOption = getSelectedOption(checkoutTime);
+    console.log(selectedCheckoutOption.value);
 
-      const newOption = document.createElement(`option`);
-        newOption.value = selectedCheckoutOption.value;
-        newOption.text = `После ` + selectedCheckoutOption.value;
-        checkinTime.appendChild(newOption);
-      };
-
-
+  const newOption = document.createElement(`option`);
+    newOption.value = selectedCheckoutOption.value;
+    newOption.text = `После ` + selectedCheckoutOption.value;
+    checkinTime.appendChild(newOption);
+  };
 
   checkinTime.addEventListener(`change`, function (evt) {
     evt.preventDefault();
@@ -89,10 +81,31 @@
   });
 
 
-  formSubmit.addEventListener(`click`, function () {
-    validateTwoSelectLists(capacity, countRooms, capacityOptions, countRoomsOptions, roomsMismatchMessage);
+// Accomodation Type vs Price
+  const accomodationType = document.querySelector(`#type`);
+  const accomodationPrice = document.querySelector(`#price`);
+  const setMinPrice = function (minPrice) {
+  accomodationPrice.setAttribute(`min`, minPrice);
+  accomodationPrice.setAttribute(`placeholder`, minPrice);
+  accomodationPrice.setCustomValidity(`Минимальная цена для выбранного типа жилья - ` + minPrice);
+  };
+
+  accomodationType.addEventListener(`change`, function () {
+  const selectedAccomodationType = getSelectedOption(accomodationType);
+
+  const validateAccomodationPrice = function () {
+    if (selectedAccomodationType.value === `flat`) {
+      setMinPrice(`1000`);
+    } else if (selectedAccomodationType.value === `house`) {
+      setMinPrice(`5000`);
+    } else if (selectedAccomodationType.value === `palace`) {
+      setMinPrice(`10000`);
+    } else {
+      accomodationPrice.setCustomValidity(``);
+    };
+  };
+  validateAccomodationPrice();
   });
-  formSubmit.removeEventListener(`click`, function () {
-    validateTwoSelectLists(capacity, countRooms, capacityOptions, countRoomsOptions, roomsMismatchMessage);
-  });
+
+
 })();
