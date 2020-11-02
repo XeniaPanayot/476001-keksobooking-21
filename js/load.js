@@ -12,7 +12,7 @@
     return cardsArray;
   };
 
-  window.load = function (url, onError) {
+  window.load = function () {
     const xhr = new XMLHttpRequest();
     xhr.responseType = `json`;
 
@@ -39,7 +39,6 @@
 
         case 404:
           error = `Страница не найдена`;
-          console.log(`Страница не найдена`);
           break;
 
         default:

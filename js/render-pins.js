@@ -5,13 +5,12 @@
     const fragment = document.createDocumentFragment();
     const pinTemplate = document.querySelector(`#pin`).content.querySelector(`button`);
     const map = document.querySelector(`.map__pins`);
-    const pins = document.querySelectorAll(`.map__pin`);
 
     for (let i = 0; i < 8; i++) {
       const clonedPin = pinTemplate.cloneNode(true);
       // обработка клика для показа попапа
       clonedPin.addEventListener(`click`, function () {
-            window.renderPopup.renderOfferPopup(i);
+        window.renderPopup.renderOfferPopup(i);
 
       });
 
