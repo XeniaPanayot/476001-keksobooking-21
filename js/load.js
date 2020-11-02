@@ -28,8 +28,6 @@
             // вызвать функцию отрисовки меток на карте
             window.renderPin.renderSmallPins();
 
-            // вызвать функцию отрисовки карточек
-            window.renderPopup.renderOfferPopup();
           };
           onSuccess();
 

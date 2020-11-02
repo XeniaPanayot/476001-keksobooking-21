@@ -2,8 +2,6 @@
 // модуль, который отрисовывает метку для активного состояния карты и передает координаты в соответствующий инпут формы
 
 (function () {
-  // const map = document.querySelector(`.map__pins`);
-  // const mapFaded = document.querySelector(`.map--faded`);
   const activatePin = function () {
     const activePin = document.querySelector(`.map__pin--main`);
     const activePinWidth = activePin.offsetWidth;

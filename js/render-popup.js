@@ -1,15 +1,12 @@
 'use strict';
 (function () {
-  // отрисовать карточки других предложений
-  const renderOfferPopup = function () {
+  // отрисовать карточкy других предложений
+  const renderOfferPopup = function (i) {
     const popupCardTemplate = document.querySelector(`#card`).content.querySelector(`.map__card`);
     const fragment2 = document.createDocumentFragment();
     const map = document.querySelector(`.map__pins`);
 
-
-    // fill the template-based popups with the cards data from the array, 8 cards = 8 popups
-    for (let i = 0; i < 8; i++) {
-      // clone the template
+    // fill the template-based popup with data
       const clonedPopupCardTemplate = popupCardTemplate.cloneNode(true);
       const cardFromCardsArray = window.load.cardsArray[i];
       const avatar = clonedPopupCardTemplate.querySelector(`.popup__avatar`);
@@ -37,7 +34,6 @@
 
         featureElement.className = `popup__feature popup__feature--${feature}`;
         featuresList.appendChild(featureElement);
-
       }
 
       const description = clonedPopupCardTemplate.querySelector(`.popup__description`);
@@ -47,23 +43,17 @@
       picture.src = cardFromCardsArray.offer.photos;
       picture.alt = cardFromCardsArray.offer.description;
       fragment2.appendChild(clonedPopupCardTemplate);
-    }
-    map.appendChild(fragment2);
 
-    // функция по нахождению кнопки закрыти и обработке клика
-    const popup = document.querySelectorAll(`.popup`);
+       // функция по нахождению кнопки закрыти и обработке клика
+        const popupCloseBtn = clonedPopupCardTemplate.querySelector(`.popup__close`);
+        popupCloseBtn.addEventListener(`click`, function (evt) {
+          evt.preventDefault();
+          clonedPopupCardTemplate.remove();
+        });
 
-    const popupCloseHandler = function (item) {
-      const popupCloseBtn = item.querySelector(`.popup__close`);
-      popupCloseBtn.addEventListener(`click`, function (evt) {
-        evt.preventDefault();
-        item.remove();
-      });
-    };
-    for (let i = 0; i < 8; i++) {
-      popupCloseHandler(popup[i]);
+      map.appendChild(fragment2);
     }
-  };
+
   window.renderPopup = {
     renderOfferPopup
   };
