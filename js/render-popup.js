@@ -54,6 +54,8 @@
       map.appendChild(fragment2);
     }
 
+
+
   window.renderPopup = {
     renderOfferPopup
   };

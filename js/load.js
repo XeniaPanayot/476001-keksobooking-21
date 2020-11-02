@@ -38,26 +38,27 @@
           break;
 
         case 404:
-          error = `Сайт не найден`;
+          error = `Страница не найдена`;
+          console.log(`Страница не найдена`);
           break;
 
         default:
           error = `Статус ответа: ` + xhr.status + ` ` + xhr.statusText;
       }
       if (error) {
-        onError(error);
+        window.errorMessage.renderErrorMessage(error);
       }
     });
 
     // если нет интернета
     xhr.addEventListener(`error`, function () {
-      onError(`Нет соединенения`);
+      window.errorMessage.renderErrorMessage(`нет соединенения`);
     });
 
     // если грузится дольше 10 секунд
     xhr.timeout = 10000;
     xhr.addEventListener(`timeout`, function () {
-      onError(`Запрос не успел выполниться за ` + xhr.timeout + `милисекунд`);
+      window.errorMessage.renderErrorMessage(`Запрос не успел выполниться за ` + xhr.timeout + `милисекунд`);
     });
 
     xhr.open(`GET`, URL);

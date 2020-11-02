@@ -12,6 +12,7 @@
       // обработка клика для показа попапа
       clonedPin.addEventListener(`click`, function () {
             window.renderPopup.renderOfferPopup(i);
+
       });
 
       clonedPin.style.left = window.load.cardsArray[i].location.x + `px`;
