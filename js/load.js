@@ -12,7 +12,7 @@
     return cardsArray;
   };
 
-  window.load = function (url, onError) {
+  window.load = function () {
     const xhr = new XMLHttpRequest();
     xhr.responseType = `json`;
 
@@ -28,8 +28,6 @@
             // вызвать функцию отрисовки меток на карте
             window.renderPin.renderSmallPins();
 
-            // вызвать функцию отрисовки карточек
-            window.renderPopup.renderOfferPopup();
           };
           onSuccess();
 
@@ -40,26 +38,26 @@
           break;
 
         case 404:
-          error = `Сайт не найден`;
+          error = `Страница не найдена`;
           break;
 
         default:
           error = `Статус ответа: ` + xhr.status + ` ` + xhr.statusText;
       }
       if (error) {
-        onError(error);
+        window.errorMessage.renderErrorMessage(error);
       }
     });
 
     // если нет интернета
     xhr.addEventListener(`error`, function () {
-      onError(`Нет соединенения`);
+      window.errorMessage.renderErrorMessage(`нет соединенения`);
     });
 
     // если грузится дольше 10 секунд
     xhr.timeout = 10000;
     xhr.addEventListener(`timeout`, function () {
-      onError(`Запрос не успел выполниться за ` + xhr.timeout + `милисекунд`);
+      window.errorMessage.renderErrorMessage(`Запрос не успел выполниться за ` + xhr.timeout + `милисекунд`);
     });
 
     xhr.open(`GET`, URL);
