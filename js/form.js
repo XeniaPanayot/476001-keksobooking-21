@@ -33,27 +33,27 @@
   });
 
   // function on form submit
-const onFormSubmit = function () {
-  const map = document.querySelector(`.map__pins`);
-  map.classList.add(`map--faded`);
-  window.formDefault.disableAllFieldsets();
-  form.reset();
-  const pins = document.querySelectorAll(`.map__pin`);
+  const onFormSubmit = function () {
+    const map = document.querySelector(`.map__pins`);
+    map.classList.add(`map--faded`);
+    window.formDefault.disableAllFieldsets();
+    form.reset();
+    const pins = document.querySelectorAll(`.map__pin`);
     pins.forEach(function (onePin) {
-    onePin.remove();
-  });
-};
-// onFormSubmit();
-window.form = {
-  onFormSubmit
-};
+      onePin.remove();
+    });
+  };
+  // onFormSubmit();
+  window.form = {
+    onFormSubmit
+  };
 
-// PROBLEM!!!!
-// send the data to the server on submit
+  // PROBLEM!!!!
+  // send the data to the server on submit
   const submitHandler = function (evt) {
     window.sendFormData(new FormData(form), function () {
-      //console.log(`data sent`);
-      //console.log(new FormData(form).get(`title`));
+      // console.log(`data sent`);
+      // console.log(new FormData(form).get(`title`));
     });
     evt.preventDefault();
   };

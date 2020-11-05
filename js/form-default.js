@@ -35,9 +35,9 @@
       switch (evt.button) {
         case 0:
           disableAllFieldsets();
-        }
       }
     }
+  }
 
   // remove disabled with the keyboard
   pinButton.addEventListener(`keydown`, function (evt) {

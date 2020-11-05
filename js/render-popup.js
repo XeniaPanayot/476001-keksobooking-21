@@ -60,7 +60,7 @@
       evt.preventDefault();
       if (evt.key === `Escape`) {
         clonedPopupCardTemplate.remove();
-      };
+      }
     });
     map.appendChild(fragment2);
   };
