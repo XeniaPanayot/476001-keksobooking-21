@@ -39,7 +39,8 @@
     }
   };
 
-  formSubmit.addEventListener(`click`, function () {
+  formSubmit.addEventListener(`click`, function (evt) {
+    evt.preventDefault();
     validateTwoSelectLists(capacity, countRooms, capacityOptions, countRoomsOptions, roomsMismatchMessage);
   });
   formSubmit.removeEventListener(`click`, function () {

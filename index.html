@@ -100,7 +100,7 @@
         </fieldset>
         <fieldset class="ad-form__element ad-form__element--wide">
           <label class="ad-form__label" for="title">Заголовок объявления</label>
-          <input id="title" name="title" type="text" minlength="30" maxlength="100" placeholder="Милая, уютная квартирка в центре Токио" required>
+          <input id="title" name="title" type="text" minlength="30" maxlength="100" placeholder="Милая, уютная квартирка в центре Токио">
         </fieldset>
         <fieldset class="ad-form__element ad-form__element--wide">
           <label class="ad-form__label" for="address">Адрес</label>
@@ -117,7 +117,7 @@
         </fieldset>
         <fieldset class="ad-form__element">
           <label class="ad-form__label" for="price">Цена за ночь, руб.</label>
-          <input type="text" pattern="^[0-9]*$" id="price" name="price" min="0" max="1000000" placeholder="5000" required>
+          <input type="text" pattern="^[0-9]*$" id="price" name="price" min="0" max="1000000" placeholder="5000" >
         </fieldset>
         <fieldset class="ad-form__element ad-form__element--time">
           <label class="ad-form__label" for="timein">Время заезда и выезда</label>
@@ -204,7 +204,7 @@
 
   <!-- Модальное окно с информацией об объявлении -->
   <template id="card">
-    <article class="map__card popup">
+    <article class="map__card popup" tabindex="0">
       <img src="img/avatars/user01.png" class="popup__avatar" width="70" height="70" alt="Аватар пользователя">
       <button type="button" class="popup__close">Закрыть</button>
       <h3 class="popup__title">Уютное гнездышко для молодоженов</h3>
@@ -250,15 +250,16 @@
  <!-- <script src="js/main.js"></script> -->
 
   <script src="js/util.js"></script>
+  <script src="js/send-form-data.js"></script>
   <script src="js/render-popup.js"></script>
-
   <script src="js/render-pins.js"></script>
   <script src="js/error-message.js"></script>
 
   <script src="js/load.js"></script>
+  <script src="js/form-default.js"></script>
   <script src="js/try-main.js"></script>
-  <script src="js/main-pin.js"></script>
 
+  <script src="js/main-pin.js"></script>
   <script src="js/map-toggle.js"></script>
   <script src="js/pin-active.js"></script>
   <script src="js/form-validation.js"></script>

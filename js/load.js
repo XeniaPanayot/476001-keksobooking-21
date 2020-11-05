@@ -26,9 +26,9 @@
             window.load.cardsArray = getCardsArray(xhr.response);
 
             // вызвать функцию отрисовки меток на карте
-            window.renderPin.renderSmallPins();
-
-          };
+              window.renderPin.renderSmallPins();
+              // window.onFormSubmit();
+            };
           onSuccess();
 
           break;

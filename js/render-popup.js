@@ -44,17 +44,28 @@
     picture.alt = cardFromCardsArray.offer.description;
     fragment2.appendChild(clonedPopupCardTemplate);
 
-    // функция по нахождению кнопки закрыти и обработке клика
+    // функция по нахождению кнопки закрытия и обработке клика
     const popupCloseBtn = clonedPopupCardTemplate.querySelector(`.popup__close`);
     popupCloseBtn.addEventListener(`click`, function (evt) {
       evt.preventDefault();
       clonedPopupCardTemplate.remove();
     });
-
+    popupCloseBtn.addEventListener(`keydown`, function (evt) {
+      evt.preventDefault();
+      if (evt.key === `Enter`) {
+        clonedPopupCardTemplate.remove();
+      }
+    });
+    document.addEventListener(`keydown`, function (evt) {
+      evt.preventDefault();
+      if (evt.key === `Escape`) {
+        clonedPopupCardTemplate.remove();
+      };
+    });
     map.appendChild(fragment2);
   };
 
   window.renderPopup = {
-    renderOfferPopup
+    renderOfferPopup,
   };
 })();
