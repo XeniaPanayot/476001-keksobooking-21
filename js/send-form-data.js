@@ -17,10 +17,9 @@
 
 (function () {
   const URL = `https://21.javascript.pages.academy/keksobooking`;
-  const map = document.querySelector(`.map__pins`);
   const form = document.querySelector(`.ad-form`);
 
-    // on submit messages
+  // on submit messages
   // const renderOnSuccessMessage = function () {
   //   const onSuccessMessageTemplate = document.querySelector(`#success`).content.querySelector(`div`);
   //   const clonedSuccessMessage = onSuccessMessageTemplate.cloneNode(true);
