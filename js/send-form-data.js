@@ -60,18 +60,18 @@
   // };
 
   // отправить данные на сервер и, выполнить действия в случае успешной отправки или ошибки
-  window.sendFormData = function (data, onSuccess) {
-    const xhr = new XMLHttpRequest();
-    xhr.responseType = `json`;
-    xhr.addEventListener(`load`, function () {
-      onSuccess(xhr.response);
-      // console.log(`data loaded`);
-    });
-    xhr.open(`POST`, URL);
-    xhr.send(data);
-  };
+  // window.sendFormData = function (data, onSuccess) {
+  //   const xhr = new XMLHttpRequest();
+  //   xhr.responseType = `json`;
+  //   xhr.addEventListener(`load`, function () {
+  //     onSuccess(xhr.response);
+  //     // console.log(`data loaded`);
+  //   });
+  //   xhr.open(`POST`, URL);
+  //   xhr.send(data);
+  // };
 
-  window.sendFormData(new FormData(form), function () {
-    // console.log(`sth happening`);
-  });
+  // window.sendFormData(new FormData(form), function () {
+  //   // console.log(`sth happening`);
+  // });
 })();

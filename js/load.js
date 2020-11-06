@@ -3,10 +3,11 @@
 // модуль, который отвечает за взаимодействие с сервером: запросы и ошибки
 (function () {
   const URL = `https://21.javascript.pages.academy/keksobooking/data`;
+  const maxPins = 5;
   //  получить массив карточек
   const getCardsArray = function (data) {
     let cardsArray = [];
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < maxPins; i++) {
       cardsArray.push(data[i]);
     }
     return cardsArray;
@@ -24,9 +25,11 @@
           const onSuccess = function () {
             // вызвать функцию создания массива на основе данных из ответа сервера
             window.load.cardsArray = getCardsArray(xhr.response);
+            console.log(window.load.cardsArray);
 
-            // вызвать функцию отрисовки меток на карте
-            window.renderPin.renderSmallPins();
+            // вызвать функцию отрисовки меток на карте на основе отфильтрованных
+            // window.renderPin.renderSmallPins();
+            window.filter.updatePins();
           };
           onSuccess();
 
@@ -41,9 +44,11 @@
           break;
 
         default:
-          error = `Статус ответа: ` + xhr.status + ` ` + xhr.statusText;
+          error = `Статус ответа: ${xhr.status} ${xhr.statusText}`;
       }
       if (error) {
+        console.log(error);
+
         window.errorMessage.renderErrorMessage(error);
       }
     });
