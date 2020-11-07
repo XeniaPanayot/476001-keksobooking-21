@@ -11,38 +11,72 @@
   const housingRooms = filterForm.querySelector(`#housing-rooms`);
   const housingGuests = filterForm.querySelector(`#housing-guests`);
   const housingFeatures = filterForm.querySelector(`#housing-features`);
+  const housingFeaturesCheckbox = housingFeatures.querySelectorAll(`input`);
+  const housingFeaturesCheckboxName = housingFeaturesCheckbox[1].name;
 
-  let filteredCardsArray = [];
-  let housingTypeChoice = housingType.options[2].value; // default value
+  const {
+    getSelectedCheckboxValues,
+    getSelectedOption,
+    filterHousingType,
+    filterHousingPrice,
+    filterHousingRooms,
+    filterHousingGuests} = window.filterHelpers;
 
-  const getSelectedOption = function (selectName) {
-    let selectedOption = selectName.options[selectName.selectedIndex];
-    for (let i = 0; i < selectName.options.length; i++) {
-      selectedOption = selectName.options[i];
-      if (selectedOption.selected === true) {
-        break;
-      }
-    }
-    return selectedOption.value;
-  };
-  housingType.addEventListener(`change`, function () {
-    const newHousingType = getSelectedOption(housingType); //get the selected type
-    // filter array and make a new array of the filtered
-    window.filter.updatePins(newHousingType);
+  const filters = {
+    type: housingType.options[0].value,
+    rooms: housingRooms.options[0].value,
+    guests: housingGuests.options[0].value,
+    price: housingPrice.options[0].value,
+  }
+
+  housingFeatures.addEventListener(`change`, function () {
+    const newHousingFeatures = getSelectedCheckboxValues(housingFeaturesCheckboxName);
   });
 
+  housingType.addEventListener(`change`, function () {
+    filters.type = getSelectedOption(housingType);
+    window.filter.updatePins(filterChoices(window.load.cardsArray, filters));
+  });
 
-  // filter array and make a new array of the filtered
-  // вместо прямого вызова   window.renderPin.renderSmallPins();
-  const updatePins = function (housingFilter = housingTypeChoice) {
-    const sameHousingTypeChoice = window.load.cardsArray.filter(card => card.offer.type === housingFilter);
-    window.renderPin.renderSmallPins();
+  housingPrice.addEventListener(`change`, function () {
+    filters.price = getSelectedOption(housingPrice);
+    window.filter.updatePins(filterChoices(window.load.cardsArray, filters));
+  });
+
+  housingRooms.addEventListener(`change`, function () {
+    filters.rooms = getSelectedOption(housingRooms);
+    window.filter.updatePins(filterChoices(window.load.cardsArray, filters));
+  });
+
+  housingGuests.addEventListener(`change`, function () {
+    filters.guests = getSelectedOption(housingGuests);
+    window.filter.updatePins(filterChoices(window.load.cardsArray, filters));
+  });
+
+  housingRooms.addEventListener(`change`, function () {
+    filters.rooms = getSelectedOption(housingRooms);
+    window.filter.updatePins(filterChoices(window.load.cardsArray, filters));
+  });
+
+  housingGuests.addEventListener(`change`, function () {
+    filters.guests = getSelectedOption(housingGuests);
+    window.filter.updatePins(filterChoices(window.load.cardsArray, filters));
+  });
+
+  const filterChoices = (offers, filters) => {
+    const guests = filterHousingGuests(offers, filters.guests);
+    const housingType = filterHousingType(guests, filters.type);
+    const housingRooms = filterHousingRooms(housingType, filters.rooms);
+    const price = filterHousingPrice(housingRooms, filters.price);
+    return price;
+  }
+
+  const updatePins = function (cards) {
+    console.log('Xeniaaaaaaaa', cards);
+    window.renderPin.renderSmallPins(cards);
   };
 
   window.filter = {
     updatePins
   };
-
-
 })();
-

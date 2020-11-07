@@ -50,12 +50,12 @@
 
   // PROBLEM!!!!
   // send the data to the server on submit
-  const submitHandler = function (evt) {
-    window.sendFormData(new FormData(form), function () {
-      // console.log(`data sent`);
-      // console.log(new FormData(form).get(`title`));
-    });
-    evt.preventDefault();
-  };
-  form.addEventListener(`submit`, submitHandler);
+  // const submitHandler = function (evt) {
+  //   window.sendFormData(new FormData(form), function () {
+  //     // console.log(`data sent`);
+  //     // console.log(new FormData(form).get(`title`));
+  //   });
+  //   evt.preventDefault();
+  // };
+  // form.addEventListener(`submit`, submitHandler);
 })();

@@ -122,4 +122,11 @@
     };
     validateAccomodationPrice();
   });
+
+  const highlightInvalidField = function (field) {
+    if (!field.checkValidity()) {
+      field.style.borderColor = `green`;
+    }
+  };
+  highlightInvalidField(offerTitle);
 })();

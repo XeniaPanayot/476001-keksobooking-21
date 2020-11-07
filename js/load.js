@@ -28,8 +28,7 @@
             console.log(window.load.cardsArray);
 
             // вызвать функцию отрисовки меток на карте на основе отфильтрованных
-            // window.renderPin.renderSmallPins();
-            window.filter.updatePins();
+            window.filter.updatePins(window.load.cardsArray);
           };
           onSuccess();
 
